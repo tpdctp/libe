@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JWPlayer Example</title>
+    <script src="https://cdn.jwplayer.com/libraries/SAHhwvZq.js"></script>
+</head>
+<body>
+    <div id="video" style="min-height: 100%; max-height: 100%;"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const manifestUri = 'https://bpprod3catchup.akamaized.net/bpk-tv/irdeto_com_Channel_252/output/team-CC.mpd';
+            
+            jwplayer("video").setup({
+                file: manifestUri,
+                type: 'dash',
+                width: '100%',
+                aspectratio: '16:9',
+                autostart: true,
+                preload: 'none',
+                repeat: true,
+                volume: 100,
+                mute: false,
+                stretching: 'exactfit',
+                cast: {},
+                drm: {
+                    clearkey: {
+                        keyId: 'eb0616f6cadb5a1e8df9ab0bbc8df5be',
+                        key: 'b02e4d672a0fd0d64b13b6a6cbe8597e'
+                    }
+                }
+            });
+
+            jwplayer().on('error', function(event) {
+                console.error('Error code', event.code, 'message', event.message);
+            });
+        });
+    </script>
+</body>
+</html>
